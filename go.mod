@@ -21,6 +21,7 @@ require (
 	github.com/jackc/pgx/v5 v5.8.0
 	github.com/onsi/ginkgo/v2 v2.28.1
 	github.com/onsi/gomega v1.39.1
+	github.com/robfig/cron/v3 v3.0.1
 	github.com/spf13/cobra v1.10.2
 	github.com/spf13/pflag v1.0.10
 	go.yaml.in/yaml/v4 v4.0.0-rc.4

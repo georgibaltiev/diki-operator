@@ -37,6 +37,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ComplianceScanList{},
 		&ReportOutput{},
 		&ReportOutputList{},
+		&ScheduledComplianceScan{},
+		&ScheduledComplianceScanList{},
 	)
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil

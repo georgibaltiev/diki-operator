@@ -53,6 +53,8 @@ type Log struct {
 type ControllerConfiguration struct {
 	// ComplianceScan is the configuration for the compliance scan controller.
 	ComplianceScan ComplianceScanConfig `json:"complianceScan"`
+	// ScheduledComplianceScan is the configuration for the scheduled compliance scan controller.
+	ScheduledComplianceScan ScheduledComplianceScanConfig `json:"scheduledComplianceScan,omitempty"`
 }
 
 // ComplianceScanConfig contains configuration for the ComplianceScan controller.
@@ -80,6 +82,13 @@ type DikiRunnerConfig struct {
 	// If not specified, the manager's kubeconfig will be used.
 	// +optional
 	Kubeconfig *string `json:"kubeconfig,omitempty"`
+}
+
+// ScheduledComplianceScanConfig contains configuration for the ScheduledComplianceScan controller.
+type ScheduledComplianceScanConfig struct {
+	// SyncPeriod is the duration how often the controller performs its reconciliation.
+	// +optional
+	SyncPeriod *metav1.Duration `json:"syncPeriod,omitempty"`
 }
 
 // ServerConfiguration contains details for the HTTP(S) servers.
