@@ -110,7 +110,8 @@ ComplianceScanStatus
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#diki.gardener.cloud/v1alpha1.ComplianceScan">ComplianceScan</a>)
+<a href="#diki.gardener.cloud/v1alpha1.ComplianceScan">ComplianceScan</a>, 
+<a href="#diki.gardener.cloud/v1alpha1.ComplianceScanTemplate">ComplianceScanTemplate</a>)
 </p>
 <p>
 <p>ComplianceScanSpec is the specification of a ComplianceScan.</p>
@@ -222,6 +223,69 @@ ComplianceScanPhase
 <td>
 <em>(Optional)</em>
 <p>Outputs contain the output statuses of the ComplianceScan.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diki.gardener.cloud/v1alpha1.ComplianceScanTemplate">ComplianceScanTemplate
+</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#diki.gardener.cloud/v1alpha1.ScheduledComplianceScanSpec">ScheduledComplianceScanSpec</a>)
+</p>
+<p>
+<p>ComplianceScanTemplate contains the spec of a ComplianceScan to be created.</p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>spec</code></br>
+<em>
+<a href="#diki.gardener.cloud/v1alpha1.ComplianceScanSpec">
+ComplianceScanSpec
+</a>
+</em>
+</td>
+<td>
+<p>Spec contains the specification of the ComplianceScan.</p>
+<br/>
+<br/>
+<table>
+<tr>
+<td>
+<code>rulesets</code></br>
+<em>
+<a href="#diki.gardener.cloud/v1alpha1.RulesetConfig">
+[]RulesetConfig
+</a>
+</em>
+</td>
+<td>
+<p>Rulesets describe the rulesets to be applied during the compliance scan.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>outputs</code></br>
+<em>
+<a href="#diki.gardener.cloud/v1alpha1.ReportOutputRef">
+[]ReportOutputRef
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>Outputs describe the outputs of the compliance scan.</p>
+</td>
+</tr>
+</table>
 </td>
 </tr>
 </tbody>
@@ -1145,6 +1209,222 @@ RulesResults
 </td>
 <td>
 <p>Results contains the results of the ruleset.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diki.gardener.cloud/v1alpha1.ScheduledComplianceScan">ScheduledComplianceScan
+</h3>
+<p>
+<p>ScheduledComplianceScan describes a scheduled compliance scan.</p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>metadata</code></br>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#objectmeta-v1-meta">
+Kubernetes meta/v1.ObjectMeta
+</a>
+</em>
+</td>
+<td>
+<p>Standard object metadata.</p>
+Refer to the Kubernetes API documentation for the fields of the
+<code>metadata</code> field.
+</td>
+</tr>
+<tr>
+<td>
+<code>spec</code></br>
+<em>
+<a href="#diki.gardener.cloud/v1alpha1.ScheduledComplianceScanSpec">
+ScheduledComplianceScanSpec
+</a>
+</em>
+</td>
+<td>
+<p>Spec contains the specification of this scheduled compliance scan.</p>
+<br/>
+<br/>
+<table>
+<tr>
+<td>
+<code>schedule</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+<p>Schedule is a cron expression that defines how often a ComplianceScan should be run.
+For example, &ldquo;0 0 * * *&rdquo; runs a scan every day at midnight.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>runsHistoryLimit</code></br>
+<em>
+int32
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>RunsHistoryLimit defines how many completed ComplianceScan CRs to retain.
+Defaults to 4.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>runTemplate</code></br>
+<em>
+<a href="#diki.gardener.cloud/v1alpha1.ComplianceScanTemplate">
+ComplianceScanTemplate
+</a>
+</em>
+</td>
+<td>
+<p>RunTemplate is the template for the ComplianceScan that will be created.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<code>status</code></br>
+<em>
+<a href="#diki.gardener.cloud/v1alpha1.ScheduledComplianceScanStatus">
+ScheduledComplianceScanStatus
+</a>
+</em>
+</td>
+<td>
+<p>Status contains the status of this scheduled compliance scan.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diki.gardener.cloud/v1alpha1.ScheduledComplianceScanSpec">ScheduledComplianceScanSpec
+</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#diki.gardener.cloud/v1alpha1.ScheduledComplianceScan">ScheduledComplianceScan</a>)
+</p>
+<p>
+<p>ScheduledComplianceScanSpec is the specification of a ScheduledComplianceScan.</p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>schedule</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+<p>Schedule is a cron expression that defines how often a ComplianceScan should be run.
+For example, &ldquo;0 0 * * *&rdquo; runs a scan every day at midnight.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>runsHistoryLimit</code></br>
+<em>
+int32
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>RunsHistoryLimit defines how many completed ComplianceScan CRs to retain.
+Defaults to 4.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>runTemplate</code></br>
+<em>
+<a href="#diki.gardener.cloud/v1alpha1.ComplianceScanTemplate">
+ComplianceScanTemplate
+</a>
+</em>
+</td>
+<td>
+<p>RunTemplate is the template for the ComplianceScan that will be created.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diki.gardener.cloud/v1alpha1.ScheduledComplianceScanStatus">ScheduledComplianceScanStatus
+</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#diki.gardener.cloud/v1alpha1.ScheduledComplianceScan">ScheduledComplianceScan</a>)
+</p>
+<p>
+<p>ScheduledComplianceScanStatus contains the status of a ScheduledComplianceScan.</p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>active</code></br>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#objectreference-v1-core">
+Kubernetes core/v1.ObjectReference
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>Active is a reference to the currently running ComplianceScan, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>lastScheduleTime</code></br>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#time-v1-meta">
+Kubernetes meta/v1.Time
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>LastScheduleTime is the time when the last ComplianceScan was scheduled.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>lastCompletionTime</code></br>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#time-v1-meta">
+Kubernetes meta/v1.Time
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>LastCompletionTime is the time when the last ComplianceScan completed.</p>
 </td>
 </tr>
 </tbody>

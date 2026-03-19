@@ -121,3 +121,8 @@ operator-up: export LD_FLAGS = $(bash $(GARDENER_HACK_DIR)/hack/get-build-ld-fla
 operator-up: $(SKAFFOLD) $(HELM) $(KUBECTL)
 	@$(KUBECTL) apply -f ./charts/diki/crds/
 	@$(SKAFFOLD) run
+
+.PHONY: operator-up-shoot
+operator-up-shoot: $(SKAFFOLD) $(HELM) $(KUBECTL)
+	@$(KUBECTL) --kubeconfig $(KUBECONFIG) apply -f ./charts/diki/crds/
+	@$(SKAFFOLD) run --profile shoot

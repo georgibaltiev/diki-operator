@@ -1,0 +1,36 @@
+apiVersion: diki.gardener.cloud/v1alpha1
+kind: ScheduledComplianceScan
+metadata:
+  name: example-scheduledcompliancescan
+spec:
+  # Run a compliance scan every day at midnight.
+  schedule: "* * * * *"
+  # Keep the last 4 completed/failed ComplianceScans.
+  runsHistoryLimit: 4
+  runTemplate:
+    spec:
+      rulesets:
+        - id: disa-kubernetes-stig
+          version: v2r4
+          options:
+            # ruleset:
+            #   configMapRef:
+            #     name: diki-options
+            #     namespace: kube-system
+            #     key: disa-kubernetes-stig
+            # rules:
+            #   configMapRef:
+            #     name: diki-options
+            #     namespace: kube-system
+            #     key: disa-kubernetes-stig-rules
+        - id: security-hardened-k8s
+          version: v0.1.0
+          options:
+            rules:
+              configMapRef:
+                name: diki-options
+                namespace: kube-system
+                key: security-hardened-k8s-rules
+      outputs:
+        - name: example-configmap-output
+        - name: example-postgres-output

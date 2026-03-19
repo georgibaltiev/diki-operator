@@ -29,6 +29,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ComplianceScanList{},
 		&ReportOutput{},
 		&ReportOutputList{},
+		&ScheduledComplianceScan{},
+		&ScheduledComplianceScanList{},
 	)
 	return nil
 }
