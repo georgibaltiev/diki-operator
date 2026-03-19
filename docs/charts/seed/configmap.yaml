@@ -6,7 +6,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: diki-operator
-  namespace: shoot--i550469--diki-hackathon
+  namespace: shoot--local--local
   labels:
     app.kubernetes.io/name: diki-operator
 data:
@@ -23,7 +23,7 @@ data:
           waitInterval: 5s
           podCompletionTimeout: 10m
           execTimeout: 30s
-          namespace: shoot--i550469--diki-hackathon
+          namespace: shoot--local--local
           kubeconfig: /var/run/secrets/gardener.cloud/shoot/generic-kubeconfig-runner/kubeconfig
           labels:
             networking.gardener.cloud/to-blocked-cidrs: allowed

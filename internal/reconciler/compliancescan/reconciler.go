@@ -69,7 +69,6 @@ func (r *Reconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Resu
 	log.Info("Updated ComplianceScan phase to Running")
 
 	reportOutputs := []v1alpha1.ReportOutput{}
-	// WE get the reportOutput
 	for _, output := range complianceScan.Spec.Outputs {
 		reportOutputObj := &v1alpha1.ReportOutput{
 			ObjectMeta: v1.ObjectMeta{

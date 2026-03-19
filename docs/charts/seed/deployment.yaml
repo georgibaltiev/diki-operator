@@ -6,7 +6,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: diki-operator
-  namespace: shoot--i550469--diki-hackathon
+  namespace: shoot--local--local
   labels:
     app.kubernetes.io/name: diki-operator
 spec:
@@ -88,7 +88,7 @@ spec:
               items:
               - key: kubeconfig
                 path: kubeconfig
-              name: generic-token-kubeconfig-09559516
+              name: generic-token-kubeconfig-1ce92f7b
               optional: false
           - secret:
               items:
@@ -104,7 +104,7 @@ spec:
               items:
               - key: kubeconfig
                 path: kubeconfig
-              name: generic-token-kubeconfig-09559516
+              name: generic-token-kubeconfig-1ce92f7b
               optional: false
           - secret:
               items:
